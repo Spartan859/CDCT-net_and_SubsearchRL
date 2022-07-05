@@ -14,7 +14,7 @@ INF=1e9
 class SeqEnv1(gym.Env):
     metadata = {'render.modes': ['human']}
 
-    def __init__(self,div=1,obsz=300,skip=False,delta=4,dt_hs=5,Rk=0.1,sim_tp="Frechet",testseed=114514,len=1000,qlen=40):
+    def __init__(self,div=1,obsz=300,skip=False,delta=4,dt_hs=5,Rk=0.1,sim_tp="Frechet",testseed=123,len=1000,qlen=40):
         self.div=div #The calculated difference measure will be divided by this number. (Float)
         self.obsz=obsz #The observed zone of the difference measure. Difference value above this number won't be taken into account. (Integer) 
         self.skip=skip #Whether to enable "skip". If set to True, the agent will skip $delta nodes after each action. (Boolean)
@@ -30,11 +30,10 @@ class SeqEnv1(gym.Env):
         if os.path.exists('seq'+self.tm)==0:
             os.mkdir('seq'+self.tm)
             os.mkdir('seq'+self.tm+'/data/')
-        open(r'seq'+self.tm+'/correct_ans.txt','w')
-        open(r'seq'+self.tm+'/data.txt','w')
+        open(r'seq'+self.tm+'/correct_ans.csv','w')
         self.viewer=None
         self.itx=0
-        self.filest=open(r'seq'+self.tm+'/answer.txt','w')
+        self.filest=open(r'seq'+self.tm+'/answer.csv','w')
         self.filest.close()
         self.observation_space=spaces.Box(low=np.array([0,0,0,-100],dtype=np.float32),high=np.array([self.obsz,self.obsz,self.obsz,100],dtype=np.float32))
         self.action_space=spaces.Discrete(2)
@@ -180,8 +179,8 @@ class SeqEnv1(gym.Env):
         isterminated=False
         if self.pt>=self.n:
             isterminated=True
-            self.filest=open(r'seq'+self.tm+'/answer.txt','a')
-            self.filest.write(str(self.bl)+' '+str(self.br)+' '+str(self.state[0])+' '+str(self.totalr)+'\n')
+            self.filest=open(r'seq'+self.tm+'/answer.csv','a')
+            self.filest.write(str(self.bl)+','+str(self.br)+','+str(self.state[0])+','+str(self.totalr)+'\n')
             self.filest.close()
             print(self.totalr)
             print(str(self.bl)+' '+str(self.br)+' '+str(self.state[0])+'\n')
