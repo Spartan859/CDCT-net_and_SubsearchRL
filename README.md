@@ -62,7 +62,9 @@ The answer.csv contains the following information:
 (l,r,dif,reward)
 
 l,r: the left and right index of the sub-trajectory in the data trajectory.
+
 dif: the difference measure between the sub-trajectory and query trajectory.
+
 reward: the reward got by the agent.
 
 By default, dif+reward+punishment=obsz.
