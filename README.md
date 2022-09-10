@@ -1,14 +1,14 @@
 # SubsearchRL
 
-This is the code implementation of the thesis ***3D Tracking of Dynamic Objects with Co-training and Sub-trajectory Search with Deep Reinforcement Learning***
+This is the code implementation of the thesis ***Co-Training Based 3D Animal Pose Estimation and Reinforcement Learning Based Sub-trajectory Search***
 
 ## Install the gym environment
 
 1. Clone the repository
 
 ```bash
-git clone https://github.com/Spartan859/SubsearchRL
-cd SubsearchRL/python_module_SEQ
+git clone https://github.com/Spartan859/CDCT-net_and_SubsearchRL
+cd CDCT-net_and_SubsearchRL/python_module_SEQ
 ```
 
 2. Install the environment
